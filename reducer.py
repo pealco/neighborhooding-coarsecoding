@@ -41,7 +41,7 @@ def main(sep='\t'):
             pfna_sizes[pfna] += 1
 
     for word, pfna, count in data:
-        print "%s%s%s%s%d%s%d" % (word, sep, pfna, sep, pfna_sizes[pfna], sep, count)
+        print sep.join((word, pfna, str(pfna_sizes[pfna]), str(count)))
 
 if __name__ == "__main__":
     CHARS = "a&@oObdDEeRfghIiklmnNprsStTUuvwjzZ"
