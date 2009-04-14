@@ -30,7 +30,7 @@ def known(words):
     
 def main(sep="\t"):
     for word in corpus:
-        print sep.join([word, str(len(known(edits(word))))])
+        print sep.join((word, str(len(known(edits(word))))))
 
 if __name__ == "__main__":
     
