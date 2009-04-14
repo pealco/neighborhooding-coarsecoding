@@ -34,7 +34,7 @@ def main(sep='\t'):
     data = sorted(data, key=itemgetter(0))
     
     pfna_sizes = {}
-    for word, pfna, count in data:
+    for _, pfna, _ in data:
         if pfna not in pfna_sizes:
             pfna_sizes[pfna] = 1
         else:
