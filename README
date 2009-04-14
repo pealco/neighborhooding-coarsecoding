@@ -1,0 +1,22 @@
+These are some scripts for finding phonological neighborhood and PFNA hash cache sizes.
+
+It expects a corpus of words in the format below. That is, a word's spelling followed by its phonetic transcription in ASCII IPA. In this example, the phones in the transcription have a space between them, but this is not strictly necessary.
+
+REALLOWANCE r ij @ l aU @ n s 
+REALLY r ij l ij 
+REALM r E l m 
+REALPOLITIK r ij l p O l @ t I k 
+REALTOR r ij l t R 
+
+The scripts are named mapper.py and reducer.py because they were originally written to be used in a MapReduce context. They work just fine (and quickly) without MapReduce, however.
+
+mapper.py
+This script does the neighborhooding. Run alone, it will output the size of a word's lexical neighborhood. This is defined as all words in the corpus that are within edit distance (Levenshtein distance) 1.
+
+reducer.py
+This script translates ASCII IPA into PFNA coarsecode and calculates the size of a code's hash cache. This script requires input from mapper.py. It cannot be run alone. 
+
+Usage:
+
+cat corpus.txt | mapper.py > output.txt
+cat corpus.txt | mapper.py | reducer.py > output.txt
