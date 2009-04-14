@@ -1,4 +1,4 @@
-These are some scripts for finding lexical neighborhood and PFNA hash cache sizes.
+These are some scripts for finding phonological neighborhood and PFNA hash cache sizes.
 
 It expects a corpus of words in the format below. That is, a word's spelling followed by its phonetic transcription in ASCII IPA. In this example, the phones in the transcription have a space between them, but this is not strictly necessary.
 
