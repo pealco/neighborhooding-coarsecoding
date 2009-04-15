@@ -18,11 +18,11 @@ def read_corpus(file):
 
 def edits(word):
     """Finds permutations of _word_ with edit distance 1."""
-    s = [(word[:i], word[i:]) for i in xrange(len(word))]
-    deletes    = [a + b[1:]               for a, b in s if b]
-    transposes = [a + b[1] + b[0] + b[2:] for a, b in s if len(b) > 1]
-    replaces   = [a + c + b[1:]           for a, b in s for c in alphabet if b]
-    inserts    = [a + c + b               for a, b in s for c in alphabet]
+    substrings = [(word[:i], word[i:]) for i in xrange(len(word))]
+    deletes    = [a + b[1:]               for a, b in substrings if b]
+    transposes = [a + b[1] + b[0] + b[2:] for a, b in substrings if len(b) > 1]
+    replaces   = [a + c + b[1:]           for a, b in substrings for c in alphabet if b]
+    inserts    = [a + c + b               for a, b in substrings for c in alphabet]
     return set(deletes + transposes + replaces + inserts)
 
 def known(words):
