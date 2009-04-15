@@ -4,6 +4,8 @@
 #
 # Author: Pedro Alcocer
 # Last modified: 12 Apr 2009
+#
+# Edit distance code adapted from Peter Norvig.
 # 
 # Usage: cat corpus.txt | mapper.py > output.txt
 #
