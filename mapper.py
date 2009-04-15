@@ -13,9 +13,8 @@
 import sys
 
 def read_corpus(file):
-    """Reads the input file and creates a dictionary with pronunications as keys."""
-    corpus = dict([("".join(line.split()[1:]), None) for line in file])
-    return corpus
+    """Reads the input file and creates a dictionary with phonetic code as keys."""
+    return dict([("".join(line.split()[1:]), None) for line in file])
 
 def edits(word):
     """Finds permutations of _word_ with edit distance 1."""
