@@ -28,10 +28,13 @@ def edits(word):
 def known(words):
     """Returns only words that are in the corpus."""
     return [word for word in words if word in corpus]
-    
+
+def known_edits2(word):
+    return set(e2 for e1 in edits(word) for e2 in edits(e1) if e2 in corpus)
+
 def main(sep="\t"):
     for word in corpus:
-        print sep.join((word, str(len(known(edits(word))))))
+        print sep.join((word, str(len(known(edits(word)))), str(len(known_edits2(word)))))
 
 if __name__ == "__main__":
     

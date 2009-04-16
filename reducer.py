@@ -26,22 +26,22 @@ def clean(input):
 
 def read_mapper_output(file, sep):
     for line in file:
-        word, count = line.rstrip().split(sep, 1)
-        yield word, ipa2hash(word), int(count)
+        word, count1, count2 = line.rstrip().split(sep, 2)
+        yield word, ipa2hash(word), int(count1), int(count2)
 
 def main(sep='\t'):
     data = read_mapper_output(sys.stdin, sep=sep)
     data = sorted(data, key=itemgetter(0))
     
     pfna_sizes = {}
-    for _, pfna, _ in data:
+    for _, pfna, _, _ in data:
         if pfna not in pfna_sizes:
             pfna_sizes[pfna] = 1
         else:
             pfna_sizes[pfna] += 1
 
-    for word, pfna, count in data:
-        print sep.join((word, pfna, str(pfna_sizes[pfna]), str(count)))
+    for word, pfna, count1, count2 in data:
+        print sep.join((word, pfna, str(pfna_sizes[pfna]), str(count1), str(count2)))
 
 if __name__ == "__main__":
     CHARS = "a&@oObdDEeRfghIiklmnNprsStTUuvwjzZ"
